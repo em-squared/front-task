@@ -1,36 +1,39 @@
 <template>
   <div class="max-w-lg mx-auto py-20">
-    <div class="flex items-center gap-2">
-      <div class="bg-gray-300 rounded-full w-14 h-14"></div>
-      <div>
-        <label for="hours-old">{{ student.name }} is</label>
-        <div class="flex gap-2">
-          <input
-            v-model="student.age"
-            name="hours-old"
-            id="hours-old"
-            class="border-b-gray-300 border-b w-[50px]"
-            type="number"
-          />
-          <div class="text">hours old</div>
-        </div>
-      </div>
-    </div>
+    <StudentItem v-for="(student, idx) in students" :key="idx" class="mb-4" :name="student.name" v-model:age="student.age" :image="student.image" />
   </div>
 </template>
 
-<script setup lang="ts">
-import { reactive, ref } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import StudentItem from './StudentItem.vue'
 
-const student = reactive<{
-  name: string
-  age: number | null
-  image: string | null
-}>({
-  name: 'Hugh',
-  age: null,
-  image: null,
+export default defineComponent({
+
+  components: {
+    StudentItem
+  },
+
+  data () {
+    const students = [
+      {
+        name: "Maxime",
+        age: "1000",
+        image: "/img/maxime.png"
+      },
+      {
+        name: "Vladimir",
+        age: "1000000",
+        image: "/img/vladimir.jpeg"
+      }
+    ]
+    
+    return {
+      students
+    }
+  }
 })
 </script>
 
-<style></style>
+<style>
+</style>

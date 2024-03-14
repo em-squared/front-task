@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@coders-tm/vue-number-format": "^3.34.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
